@@ -15,7 +15,7 @@ pipeline {
 				echo 'Building...'
 				// Add your build commands here
 				    script {
-                    app = docker.build("test-app-image", "Dockerfile .")
+                    app = docker.build("test-app-image:0.1", "--network=host -f Dockerfile .")
                 }
 			}
 		}
