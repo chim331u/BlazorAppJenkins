@@ -17,6 +17,7 @@ pipeline {
 				    script {
                     app = docker.build("test-app-image:0.1", "--network=host -f Dockerfile .")
                 }
+                sh 'ls -la'
 			}
 		}
 		stage('Deploy') {
@@ -30,7 +31,7 @@ pipeline {
 				echo "RUN..."
                 script {
 					try {
-						sh "docker run --name test-app-jenkins --network=host imageName test-app-image:0.1 -p 8090:8080 "
+						sh "docker run --name test-app-jenkins --network=host imagename test-app-image:0.1 -p 8090:8080 "
                     } catch(err) {
 						throw err
                     } finally {
