@@ -14,6 +14,9 @@ pipeline {
 			steps {
 				echo 'Building...'
 				// Add your build commands here
+				    script {
+                    app = docker.build("test-app-image", "Dockerfile .")
+                }
 			}
 		}
 		stage('Deploy') {
