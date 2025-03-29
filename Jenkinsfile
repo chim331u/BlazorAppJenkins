@@ -25,6 +25,19 @@ pipeline {
 				// Add your deployment commands here
 			}
 		}
+		stage('RUN') {
+			steps{
+				echo "RUN..."
+                script {
+					try {
+						sh "docker run --name test-app-jenkins --network=host imageName test-app-image:0.1 -p 8090:8080 "
+                    } catch(err) {
+						throw err
+                    } finally {
+					}
+                }
+            }
+        }
 	}
 
 	post {
