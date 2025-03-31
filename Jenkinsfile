@@ -16,7 +16,7 @@ pipeline {
 				sh 'docker images'
 				// Add your build commands here
 				    script {
-                    app = docker.build("test-app-image:0.2", "--network=host -f Dockerfile .")
+                    app = docker.build("test-app-image:0.3", "--network=host -f Dockerfile .")
                 }
                 sh 'ls -la'
 			}
@@ -25,6 +25,7 @@ pipeline {
 			steps {
 				echo 'Deploying...'
 				// Add your deployment commands here
+				sh 'docker images'
 			}
 		}
 	}
