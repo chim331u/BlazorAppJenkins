@@ -16,7 +16,7 @@ pipeline {
 				sh 'docker images'
 				// Add your build commands here
 				    script {
-                    app = docker.build("test-app-image:0.4", "--network=host -f Dockerfile .")
+                    app = docker.build("test-app-image:0.5", "--network=host -f Dockerfile .")
                 }
                 sh 'ls -la'
 			}
@@ -26,8 +26,8 @@ pipeline {
 				echo 'Deploying...'
 				// Add your deployment commands here
 				sh 'docker images'
-				sh 'docker tag test-app-image:0.4 localhost:5001/test-app-image:latest'
-				sh 'docker push localhost:5001/test-app-image:latest'
+				sh 'docker tag test-app-image:0.5 http://192.168.1.115:5001/testappimage:latest'
+				sh 'docker push http://192.168.1.115:5001/testappimage:latest'
 			}
 		}
 	}
