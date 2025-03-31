@@ -13,6 +13,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				echo 'Building...'
+				sh 'docker images'
 				// Add your build commands here
 				    script {
                     app = docker.build("test-app-image:0.2", "--network=host -f Dockerfile .")
