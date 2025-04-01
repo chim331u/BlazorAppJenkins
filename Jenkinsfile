@@ -22,7 +22,7 @@ pipeline {
 				// Add your build commands here
 				    script {
 					//docker buildx build --platform linux/arm/v7
-                    app = docker.build("${imagename}:latest", "--network=host --platform linux/arm/v7 -f Dockerfile .")
+                    app = docker.build("${imagename}:latest", "--network=host -f Dockerfile .")
                 }
                 sh 'ls -la'
 			}
