@@ -1,7 +1,8 @@
 pipeline {
 	agent any
     environment {
-		imagename = "chim3312/test-app-image"
+		//imagename = "chim3312/test-app-image"
+		imagename = "192.168.1.5:30115/test-app-image"
         dockerImage = ''
         containerName = 'my-container'
         dockerHubCredentials = 'dockerhubadmin'
@@ -39,12 +40,13 @@ pipeline {
 		stage('Deploy Image') {
 			steps {
 				script {
-					// Use Jenkins credentials for Docker Hub login
-                    withCredentials([usernamePassword(credentialsId: dockerHubCredentials, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-						sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
+					//// Use Jenkins credentials for Docker Hub login
+                    //withCredentials([usernamePassword(credentialsId: dockerHubCredentials, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+					//	sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
  
-                        // Push the image
-                        sh "docker push ${imagename}:latest"
+                      //  // Push the image
+                       // sh "docker push ${imagename}:latest"
+                       sh "docker push ${imagename}:latest"
                     }
                 }
             }
