@@ -1,8 +1,8 @@
 pipeline {
 	agent any
     environment {
-		//imagename = "chim3312/test-app-image"
-		imagename = "192.168.1.5:30115/test-app-image"
+		imagename = "chim3312/test-app-image-arm32"
+		//imagename = "192.168.1.5:30115/test-app-image"
         dockerImage = ''
         containerName = 'my-container'
         dockerHubCredentials = 'dockerhubadmin'
